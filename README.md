@@ -1,1 +1,1 @@
-# FinalProject
+# CS378 Ethical Hacking Final Project

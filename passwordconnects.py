@@ -6,7 +6,6 @@ class moduleA(object):
 	def __init__(self):
 		self.username = "mam-venda@hotmail.com"
 
-
 class moduleB(moduleA):
 	"""
 	This is the class to return to Michael
@@ -42,10 +41,6 @@ class moduleB(moduleA):
 			if moduleA.username in self.dicts:
 				for v in self.dicts[moduleA.username]:
 					file.write(v + "\n")
-
-	def print_file(self):
-		with open(self.filename, "r") as file:
-			print()
 
 def main():
 	class1 = moduleA()
