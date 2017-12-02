@@ -6,7 +6,7 @@ class moduleA(object):
 	def __init__(self):
 		self.username = "mam-venda@hotmail.com"
 
-class moduleB(moduleA):
+class moduleB(object):
 	"""
 	This is the class to return to Michael
 	Contains the username from Nick and a filename of the file that lists out this user's pwned passwords
