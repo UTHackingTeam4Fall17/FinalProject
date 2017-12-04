@@ -1,0 +1,4 @@
+10.202.208.81
+8080
+http-post-form
+'/login:username=^USER^&password=^PASS^:S=Hello World!'

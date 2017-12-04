@@ -1,0 +1,4 @@
+10.202.208.81
+8081
+http-post-form
+'/login:username=^USER^&password=^PASS^:S=Welcome to your account!'
