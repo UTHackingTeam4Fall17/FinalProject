@@ -65,11 +65,11 @@ def login():
             user = users[username]
             login_user(user)
             #return redirect('/welcome')
-            return Response('Hello World!')
+            return Response('Welcome to your account!')
         else:
-            return get_login_form('Please try again')
+            return get_login_form('Sorry, that was wrong.')
     else:
-        return get_login_form('Please login')
+        return get_login_form('Welcome to another major website! Please login to your account')
 
 # somewhere to logout
 @app.route("/logout")
