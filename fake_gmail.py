@@ -29,7 +29,7 @@ class User(UserMixin):
  
  
 # create some users with ids 1 to 20      
-names = ['michael', 'arnav', 'cindy', 'nick']
+names = ['michael@gmail.com', 'arnav@gmail.com', 'cindy@gmail.com', 'nick@gmail.com']
 password = ['password', 'abc123', '123456', 'apple']
 user_dict = dict(itertools.izip(names, password))
 ids = [val + 1 for val in range(len(names))]
@@ -55,7 +55,7 @@ def get_login_form(message):
    '''.format(message))
  
 # somewhere to login
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/entering_credentials", methods=["GET", "POST"])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -92,4 +92,4 @@ def load_user(userid):
     
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8082)

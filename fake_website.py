@@ -29,7 +29,7 @@ class User(UserMixin):
  
  
 # create some users with ids 1 to 20      
-names = ['michael', 'arnav', 'cindy', 'nick']
+names = ['michael@gmail.com', 'arnav@gmail.com', 'cindy@gmail.com', 'nick@gmail.com']
 password = ['password', 'better_password', '123456', 'apple']
 
 user_dict = dict(itertools.izip(names, password))
