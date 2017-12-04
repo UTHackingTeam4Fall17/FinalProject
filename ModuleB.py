@@ -19,13 +19,15 @@ class moduleB(object):
         with open("password_dumps.txt", "r") as file:
             for line in file.readlines():
                 if line.strip():        # check empty lines
-                    info = line.split(":")
-                    value = [info[1].strip()]
-
-                    if info[0] not in self.dicts:
-                        self.user_pass_combo[info[0]] = value
+                    credential = line.split(":")
+                    name = credential[0].strip()
+                    passwd = credential[1].strip()
+                    if name not in self.user_pass_combo:
+                        self.user_pass_combo[name] = [passwd]
                     else:
-                        self.user_pass_combo[info[0]].append(info[1].strip())
+                        # make sure the password associated with this username is not already in the list
+                        if passwd not in self.user_pass_combo[name]:
+                            self.user_pass_combo[name].append(passwd)
     
     def write_file(self):
         """
@@ -37,5 +39,5 @@ class moduleB(object):
                     file.write(v + "\n")
 
 if __name__ == '__main__':
-    mod_b = moduleB('mam-venda@hotmail.com')
+    mod_b = moduleB('rellassemmeby-2298@yopmail.com')
     mod_b.write_file()
