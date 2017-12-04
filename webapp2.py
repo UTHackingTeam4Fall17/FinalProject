@@ -30,7 +30,8 @@ class User(UserMixin):
  
 # create some users with ids 1 to 20      
 names = ['michael', 'arnav', 'cindy', 'nick']
-password = ['password', 'abc123', '123456', 'apple']
+password = ['password', 'better_password', '123456', 'apple']
+
 user_dict = dict(itertools.izip(names, password))
 ids = [val + 1 for val in range(len(names))]
 pairs = zip(ids, names, password)
@@ -68,7 +69,7 @@ def login():
         else:
             return get_login_form('Please try again')
     else:
-        return get_login_form('Welcome to fake Facebook! Please login')
+        return get_login_form('Please login')
 
 # somewhere to logout
 @app.route("/logout")
@@ -92,4 +93,4 @@ def load_user(userid):
     
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=8081)
