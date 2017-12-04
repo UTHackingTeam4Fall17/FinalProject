@@ -30,7 +30,7 @@ def grab_success(output_lines, port, service_mode):
 def attack(moduleB, website_info):
     username = moduleB.username
     passwords = moduleB.filename
-    ip_addresss, service_mode, address_and_details, port = website_info.get_attack_info()
+    ip_addresss, port, service_mode, address_and_details = website_info.get_attack_info()
 
     proc = subprocess.Popen(['hydra', '-l', username, '-P', passwords, ip_address, '-s', port, service_mode, address_and_details], stdout = subprocess.PIPE)
 
