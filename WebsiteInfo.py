@@ -24,12 +24,13 @@ def get_all_websites():
     files = listdir(websites_dir)
     for website_name in files:
         with open(websites_dir + website_name) as f:
+            name = f.readline().rstrip()
             ip_addr = f.readline().rstrip()
             port = f.readline().rstrip()
             service_mode = f.readline().rstrip()
             address_and_details = f.readline().strip()
             
-            websites[website_name] = WebsiteInfo(website_name, ip_addr, service_mode, address_and_details, port)
+            websites[website_name] = WebsiteInfo(name, ip_addr, service_mode, address_and_details, port)
 
     return websites
 
