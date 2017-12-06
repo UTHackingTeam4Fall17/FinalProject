@@ -18,7 +18,6 @@ login_manager.login_view = "login"
  
 # silly user model
 class User(UserMixin):
- 
     def __init__(self, ID, name, password):
         self.id = ID
         self.name = name
@@ -36,7 +35,6 @@ ids = [val + 1 for val in range(len(names))]
 pairs = zip(ids, names, password)
 users = {name: User(ID, name, password) for ID, name, password in pairs}
 user_ids = {ID: User(ID, name, password) for ID, name, password in pairs}
- 
  
 # some protected url
 @app.route('/welcome')
@@ -77,6 +75,15 @@ def logout():
     logout_user()
     return Response('<p>Logged out</p>')
 
+@app.route("/users", methods=["HEAD"])
+def has_user():
+    name = request.args.get('name')
+    if name is None:
+        return '', 400
+    elif name in names:
+        return '', 200
+    else:
+        return '', 404
 
 # handle login failed
 @app.errorhandler(401)
