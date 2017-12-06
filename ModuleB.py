@@ -33,7 +33,7 @@ class moduleB(object):
         """
         writes the passwords of the username one line at a time
         """
-        with open(self.filename, "a") as file:
+        with open(self.filename, "w") as file:
             if self.username in self.user_pass_combo:
                 for v in self.user_pass_combo[self.username]:
                     file.write(v + "\n")

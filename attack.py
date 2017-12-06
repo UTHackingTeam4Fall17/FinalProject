@@ -53,7 +53,6 @@ def attack(moduleB, website_info):
 def attack_all_websites(moduleB):
     websites = WebsiteInfo.get_all_websites()
     for k, website_info in websites.items():
-        print 'printing', k, website_info
         attack(moduleB, website_info) 
 
 if __name__ == '__main__':
