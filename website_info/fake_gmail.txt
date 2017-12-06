@@ -2,4 +2,4 @@ Fake Gmail
 10.202.208.81
 8082
 http-post-form
-'/login:user=^USER^&pass=^PASS^:S=Here is your inbox!'
+/entering_credentials:user=^USER^&pass=^PASS^:S=Here is your inbox!
